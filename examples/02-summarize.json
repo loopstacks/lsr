@@ -1,0 +1,28 @@
+{
+  "id": "summarize",
+  "name": "Summarize Text",
+  "description": "Produces a structured summary with keyPoints.",
+  "version": "1.0.0",
+  "kind": "prompt",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "text": { "type": "string" }
+    },
+    "required": ["text"]
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "summary": { "type": "string" },
+      "keyPoints": { "type": "array", "items": { "type": "string" } }
+    },
+    "required": ["summary", "keyPoints"]
+  },
+  "prompt": {
+    "template": "Summarize the following text in one sentence and list three key points.\n\nText: {{text}}",
+    "variables": ["text"],
+    "maxTokens": 300
+  },
+  "backend": { "id": "mock" }
+}

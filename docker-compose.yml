@@ -1,0 +1,12 @@
+services:
+  lsr:
+    build: .
+    image: loopstacks/lsr:0.1.0
+    ports:
+      - "3000:3000"
+    environment:
+      # Optional - uncomment to use real backends
+      # - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      # - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+      - LOG_LEVEL=info
+    restart: unless-stopped

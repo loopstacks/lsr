@@ -1,0 +1,26 @@
+{
+  "id": "extract-keywords",
+  "name": "Extract Keywords",
+  "description": "Extracts keywords from a block of text.",
+  "version": "1.0.0",
+  "kind": "prompt",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "text": { "type": "string" }
+    },
+    "required": ["text"]
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "keywords": { "type": "array", "items": { "type": "string" } }
+    },
+    "required": ["keywords"]
+  },
+  "prompt": {
+    "template": "Extract the most important keywords from this text. Return as a JSON array.\n\nText: {{text}}",
+    "variables": ["text"]
+  },
+  "backend": { "id": "mock" }
+}

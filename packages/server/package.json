@@ -1,0 +1,27 @@
+{
+  "name": "@loopstacks/server",
+  "version": "0.1.0",
+  "description": "LSR server — Fastify REST + WebSocket runtime.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "bin": {
+    "lsr-server": "./dist/index.js"
+  },
+  "files": ["dist", "README.md", "LICENSE"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "dev": "tsc -p tsconfig.json && node dist/index.js"
+  },
+  "dependencies": {
+    "@loopstacks/core": "0.1.0",
+    "@fastify/static": "^7.0.0",
+    "@fastify/websocket": "^10.0.0",
+    "fastify": "^4.26.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "typescript": "^5.4.0"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "id": "rag-answer",
+  "name": "RAG Answer",
+  "description": "Composite: extract keywords from a question, retrieve context, synthesize an answer. The elegant demo of LSEM composition: RAG is just loops calling loops.",
+  "version": "1.0.0",
+  "kind": "composite",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "question": { "type": "string" }
+    },
+    "required": ["question"]
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "answer": { "type": "string" }
+    },
+    "required": ["answer"]
+  },
+  "composite": {
+    "steps": [
+      {
+        "loopId": "extract-keywords",
+        "inputMapping": {
+          "text": "$.input.question"
+        }
+      },
+      {
+        "loopId": "retrieve-context",
+        "inputMapping": {
+          "keywords": "$.steps[0].output.keywords"
+        }
+      },
+      {
+        "loopId": "synthesize-answer",
+        "inputMapping": {
+          "question": "$.input.question",
+          "documents": "$.steps[1].output.documents"
+        }
+      }
+    ]
+  }
+}

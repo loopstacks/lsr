@@ -1,0 +1,27 @@
+{
+  "id": "synthesize-answer",
+  "name": "Synthesize Answer",
+  "description": "Synthesizes an answer from a question and retrieved context documents.",
+  "version": "1.0.0",
+  "kind": "prompt",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "question": { "type": "string" },
+      "documents": { "type": "array", "items": { "type": "string" } }
+    },
+    "required": ["question", "documents"]
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "answer": { "type": "string" }
+    },
+    "required": ["answer"]
+  },
+  "prompt": {
+    "template": "Answer the question using only the provided documents.\n\nQuestion: {{question}}\n\nDocuments: {{documents}}",
+    "variables": ["question", "documents"]
+  },
+  "backend": { "id": "mock" }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "retrieve-context",
+  "name": "Retrieve Context",
+  "description": "Retrieves relevant documents for a set of keywords. In v0.1 this is mocked; v0.2 will wire this to a vector DB via an adapter.",
+  "version": "1.0.0",
+  "kind": "prompt",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "keywords": { "type": "array", "items": { "type": "string" } }
+    },
+    "required": ["keywords"]
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "documents": { "type": "array", "items": { "type": "string" } }
+    },
+    "required": ["documents"]
+  },
+  "prompt": {
+    "template": "Retrieve the 3 most relevant documents for keywords: {{keywords}}. Return as JSON with a documents array.",
+    "variables": ["keywords"]
+  },
+  "backend": { "id": "mock" }
+}

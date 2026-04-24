@@ -1,0 +1,28 @@
+{
+  "id": "hello",
+  "name": "Hello Loop",
+  "description": "The simplest possible loop — takes a name, returns a greeting.",
+  "version": "1.0.0",
+  "kind": "prompt",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "name": { "type": "string" }
+    },
+    "required": ["name"]
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "greeting": { "type": "string" }
+    },
+    "required": ["greeting"]
+  },
+  "prompt": {
+    "template": "Greet someone named {{name}} in one sentence.",
+    "variables": ["name"],
+    "maxTokens": 50,
+    "temperature": 0.7
+  },
+  "backend": { "id": "mock" }
+}
